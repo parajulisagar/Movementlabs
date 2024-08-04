@@ -1,6 +1,6 @@
-# Selenium Web Automation for Glaxe Connection
+# Selenium Web Automation for Galxe Connection
 
-This project automates the process of connecting to Glaxe via Twitter and MetaMask using Selenium WebDriver.
+This project automates the process of connecting to Galxe via Twitter and MetaMask using Selenium WebDriver.
 
 ## Requirements
 
