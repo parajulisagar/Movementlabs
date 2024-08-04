@@ -37,7 +37,5 @@ This project automates the process of connecting Galxe to Movementlabs via Twitt
     # Change your profile directory here
     op.add_argument('user-data-dir=/Users/sagar/Library/Application Support/Google/Chrome')
     op.add_argument("--profile-directory={}".format("Profile 1"))
-    # op.add_extension("buster.crx")
-    # op.add_argument("--headless=new")
     driver = UC.Chrome(options=op)
     ```
