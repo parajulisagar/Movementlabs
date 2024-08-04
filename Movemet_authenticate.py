@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import credentials as cred
 import locators
+import connectby
 
 op= UC.ChromeOptions()
 #change your profile directory here
@@ -23,18 +24,9 @@ time.sleep(5)
 click_connect_GALXE= driver.find_element(By.XPATH,locators.CONNECT_GLAXE_BTN).click()
 time.sleep(5)
 click_login_GALXE= driver.find_element(By.XPATH,locators.GALXE_LOGIN_BTN_XPATH).click()
-time.sleep(2)
-click_twitter_btn= driver.find_element(By.XPATH,locators.TWITTER_BTN_XPATH).click()
-time.sleep(10)
-#navigate to pop up windows
-tabs = driver.window_handles
-driver.switch_to.window(tabs[1])
+time.sleep(4)
 
-input_username = driver.find_element(By.NAME,locators.USERNAME_NAME).send_keys(cred.USERNAME)
-time.sleep(100)
-click_next_btn= driver.find_element(By.XPATH,locators.NEXT_BTN_XPATH).click()
-time.sleep(3)
-input_passowrd = driver.find_element(By.NAME,locators.PASSWORD_NAME).send_keys(cred.USERNAME)
+connectby.twitter(driver)
 
 #authenticate and wait
 Authenticate_x = driver.find_element(By.XPATH,locators.AUTHENTICATE_BTN_XPATH).click()
