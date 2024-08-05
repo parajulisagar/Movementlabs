@@ -59,15 +59,20 @@ def metamask(driver):
     # Navigate to the popup window
     tabs = driver.window_handles
     driver.switch_to.window(tabs[1])
-    
+    try:
+        enter_password = driver.find_element(By.ID,locators.METAMASK_PASSWORD_ID).send_keys(cred.META_PASS)
+        click_unlock_btn= driver.find_element(By.XPATH,locators.METAMASK_UNLOCK_XPATH).click()
+    except Exception as e:
+        print(f"Already Unlocked {e}")
+    time.sleep(6)
     # Click the next button in MetaMask
-    click_next_btn= driver.find_element(By.XPATH,locators.NEXT_BTN_XPATH).click()
-    
+    click_next_btn= driver.find_element(By.XPATH,locators.METAMASK_NEXT_BTN_XPATH).click()
+    time.sleep(3)
     # Click the confirm button in MetaMask
-    click_confirm_btn= driver.find_element(By.XPATH,locators.METAMASK_CONFIRM_XPATH).click()
-    
+    click_confirm_btn= driver.find_element(By.XPATH,locators.METAMASK_CONFIRM_BTN_XPATH).click()
+    time.sleep(3)
     # Click the sign-in button in MetaMask
-    click_signin_btn= driver.find_element(By.XPATH,locators.METAMASK_SIGNIN_XPATH).click()
+    click_signin_btn= driver.find_element(By.XPATH,locators.METAMASK_SIGNIN_BTN_XPATH).click()
     
     
     

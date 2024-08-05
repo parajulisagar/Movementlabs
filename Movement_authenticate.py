@@ -9,7 +9,7 @@ import connectby
 op= UC.ChromeOptions()
 #change your profile directory here
 op.add_argument('user-data-dir=/Users/sagar/Library/Application Support/Google/Chrome')
-op.add_argument("--profile-directory={}".format("Profile 1"))
+op.add_argument("--profile-directory={}".format("Profile 2"))
 # op.add_extension("buster.crx")
 # op.add_argument("--headless=new")
 driver = UC.Chrome(options=op)
@@ -23,10 +23,17 @@ time.sleep(5)
 
 click_connect_GALXE= driver.find_element(By.XPATH,locators.CONNECT_GLAXE_BTN).click()
 time.sleep(5)
-click_login_GALXE= driver.find_element(By.XPATH,locators.GALXE_LOGIN_BTN_XPATH).click()
+
+try:
+    click_change_account = driver.find_element(By.XPATH,locators.CHANGE_ACCOUNT_XPATH).click()
+    click_login_GALXE= driver.find_element(By.XPATH,locators.GALXE_LOGIN_BTN_XPATH).click()
+except Exception as e:
+    print(f"NO prior Login: {e}")
+
 time.sleep(4)
 
-connectby.twitter(driver)
+# connectby.twitter(driver)
+connectby.metamask(driver)
 
 #authenticate and wait
 Authenticate_x = driver.find_element(By.XPATH,locators.AUTHENTICATE_BTN_XPATH).click()
@@ -35,9 +42,7 @@ time.sleep(6)
 input_username = driver.find_element(By.NAME,locators.PASSWORD_NAME).send_keys(cred.USERNAME)
 
 
-
 # Find and click the "Sign in with Twitter" button
-
 
 # Check if login was successful and redirect back to the main site
 try:

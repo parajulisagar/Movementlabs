@@ -14,12 +14,18 @@ INPUT_USERNAME_XPATH="//input[@placeholder='Enter username']"
 CROSS_BTN='/html/body/div[3]/button'
 AUTHORIZE_BTN_XPATH='/html/body/div/main/div/div/div/div/div/div[4]/button[2]'
 MOVEMENT_LAB_CROSS='/html/body/div/div[2]/div/div/div/div[1]/svg'
+CHANGE_ACCOUNT_XPATH='/html/body/div/main/div/div/div/div/div/div[3]/div[2]/div/div[2]/div[2]'
 
 #metamask
-METAMASK_XPATH='/html/body/div[3]/div[2]/div/div/div[2]/div/div[2]/div'
-METAMASK_NEXT_XPATH="//button[text()='Next']"
-METAMASK_CONFIRM_XPATH="//button[text()='Confirm']"
-METAMASK_SIGNIN_XPATH="//button[text()='Sign-In']"
+METAMASK_XPATH='/html/body/div[3]/div[2]/div/div/div[2]/div/div[2]'
+# METAMASK_NEXT_XPATH="//button[text()='Next']"
+# METAMASK_CONFIRM_XPATH="//button[text()='Confirm']"
+# METAMASK_SIGNIN_XPATH="//button[text()='Sign-In']"
+METAMASK_PASSWORD_ID='password'
+METAMASK_UNLOCK_XPATH="//button[@data-testid='unlock-submit' and text()='Unlock']"
+METAMASK_NEXT_BTN_XPATH="//button[@data-testid='page-container-footer-next' and text()='Next']"
+METAMASK_CONFIRM_BTN_XPATH="//button[@data-testid='page-container-footer-next' and text()='Confirm']"
+METAMASK_SIGNIN_BTN_XPATH="//button[@data-testid='page-container-footer-next' and text()='Sign-In']"
 
 
 
