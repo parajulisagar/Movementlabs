@@ -18,7 +18,8 @@ driver = UC.Chrome(options=op)
 
 # Open the specified URL
 driver.get("https://testnet.movementlabs.xyz")
-
+tabs = driver.window_handles
+print(tabs)
 
 # click_cross_GALXE= driver.find_element(By.XPATH,locators.MOVEMENT_LAB_CROSS).click()
 click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
@@ -28,14 +29,15 @@ try:
     click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
     click_change_account.click()
 except:
-    print(f"NO prior Login found")
+    print(f"No prior Login found")
 
 click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
 click_login_GALXE.click()
 
-
-# connectby.twitter(driver)
-connectby.metamask(driver)
+tabs = driver.window_handles
+print(tabs)
+connectby.twitter(driver)
+# connectby.metamask(driver)
 
 #authenticate and wait
 Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHENTICATE_BTN_XPATH)))
