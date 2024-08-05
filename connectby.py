@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import credentials as cred
 import locators
 import time
@@ -16,27 +18,37 @@ def twitter(driver):
     """
     
     # Click the Twitter button to initiate login
-    click_twitter_btn= driver.find_element(By.XPATH,locators.TWITTER_BTN_XPATH).click()
-    time.sleep(10)
+    twitter_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
+    twitter_btn.click()
     
     #navigate to pop up windows
     tabs = driver.window_handles
     driver.switch_to.window(tabs[1])
 
     # Enter the username
-    input_username = driver.find_element(By.XPATH,locators.USERNAME_XPATH).send_keys(cred.USERNAME)
-    time.sleep(1)
+    input_username = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.USERNAME_XPATH)))
+    input_username.send_keys(cred.USERNAME)
+    # time.sleep(1)
     
     # Click the next button
-    click_next_btn= driver.find_element(By.XPATH,locators.NEXT_BTN_XPATH).click()
-    time.sleep(3)
+    next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
+    next_btn.click()
+    try:
+        enter_email = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
+        enter_email.send_keys(cred.MAIL)
+        click_next= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
+        click_next.click()
+    except:
+        print(f"Verification does not need for this ID ")
     
+   
     # Enter the password
-    input_passowrd = driver.find_element(By.XPATH,locators.PASSWORD_XPATH).send_keys(cred.PASSWORD)
-    time.sleep(5)
+    input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
+    input_passowrd.send_keys(cred.PASSWORD)
     
     # Click the login button
-    login_btn_click = driver.find_element(By.XPATH,locators.LOGIN_BTN_XPATH).click()
+    login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
+    login_btn.click()
     
     time.sleep(1000)
     
@@ -51,28 +63,36 @@ def metamask(driver):
     2. Switches to the newly opened MetaMask login popup window.
     3. Navigates through the MetaMask login confirmation steps.
     """
-    
-    # Click the MetaMask button to initiate login
-    click_metamask_btn= driver.find_element(By.XPATH,locators.METAMASK_XPATH).click()
+    try:
+        # Click the MetaMask button to initiate login
+        metamask_btn= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.METAMASK_XPATH)))
+        metamask_btn.click()
+    except:
+        pass
     time.sleep(5)
-    
     # Navigate to the popup window
     tabs = driver.window_handles
     driver.switch_to.window(tabs[1])
     try:
-        enter_password = driver.find_element(By.ID,locators.METAMASK_PASSWORD_ID).send_keys(cred.META_PASS)
-        click_unlock_btn= driver.find_element(By.XPATH,locators.METAMASK_UNLOCK_XPATH).click()
-    except Exception as e:
-        print(f"Already Unlocked {e}")
-    time.sleep(6)
+        enter_password = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, locators.METAMASK_PASSWORD_ID)))
+        enter_password.send_keys(cred.META_PASS)
+        unlock_btn= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.METAMASK_UNLOCK_XPATH)))
+        unlock_btn.click()
+    except:
+        print(f"Already Unlocked")
+   
     # Click the next button in MetaMask
-    click_next_btn= driver.find_element(By.XPATH,locators.METAMASK_NEXT_BTN_XPATH).click()
-    time.sleep(3)
+    next_btn= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.METAMASK_NEXT_BTN_XPATH)))
+    next_btn.click()
     # Click the confirm button in MetaMask
-    click_confirm_btn= driver.find_element(By.XPATH,locators.METAMASK_CONFIRM_BTN_XPATH).click()
-    time.sleep(3)
-    # Click the sign-in button in MetaMask
-    click_signin_btn= driver.find_element(By.XPATH,locators.METAMASK_SIGNIN_BTN_XPATH).click()
+    confirm_btn= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.METAMASK_CONFIRM_BTN_XPATH)))
+    confirm_btn.click()
+    try:
+        # Click the sign-in button in MetaMask
+        signin_btn= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.METAMASK_SIGNIN_BTN_XPATH)))
+        signin_btn.click()
+    except:
+        pass
     
     
     

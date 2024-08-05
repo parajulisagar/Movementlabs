@@ -1,12 +1,16 @@
-CONNECT_GLAXE_BTN="/html/body/div/div/div[2]/div/div/button"
-GALXE_LOGIN_BTN_XPATH='/html/body/div/main/div/div/div/div/div/div[3]'
+CONNECT_GLAXE_BTN="//button[@class='main' and text()='Connect Galxe']"
+GALXE_LOGIN_BTN_XPATH="//div[text()='Log in']"
 TWITTER_BTN_XPATH='/html/body/div[3]/div[2]/div/div/div[1]/div/button[1]'
+
 
 #Twitter
 USERNAME_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[4]/label/div/div[2]/div/input'
 PASSWORD_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input'
 NEXT_BTN_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'
 LOGIN_BTN_XPATH='/html/body/div/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div/button'
+VERIFY_MAIL_INPUT_XPATH='/html/body/div/div/div/div/main/div/div/div/div[2]/div[2]/div[1]/div/div/div[2]/label/div/div[2]/div/input'
+VERIFY_NEXT_XPATH='/html/body/div/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div/div/button'
+
 
 #GLAXE
 AUTHENTICATE_BTN_XPATH='//*[@id="react-root"]/div/div/div[2]/main/div/div/div[2]/div/div/div[1]/div[3]/button'
@@ -17,7 +21,7 @@ MOVEMENT_LAB_CROSS='/html/body/div/div[2]/div/div/div/div[1]/svg'
 CHANGE_ACCOUNT_XPATH='/html/body/div/main/div/div/div/div/div/div[3]/div[2]/div/div[2]/div[2]'
 
 #metamask
-METAMASK_XPATH='/html/body/div[3]/div[2]/div/div/div[2]/div/div[2]'
+METAMASK_XPATH="//div[@class='flex items-center'][descendant::div[contains(text(),'MetaMask')]]"
 # METAMASK_NEXT_XPATH="//button[text()='Next']"
 # METAMASK_CONFIRM_XPATH="//button[text()='Confirm']"
 # METAMASK_SIGNIN_XPATH="//button[text()='Sign-In']"

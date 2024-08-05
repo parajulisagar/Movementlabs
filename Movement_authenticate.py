@@ -1,6 +1,8 @@
 import undetected_chromedriver as UC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import credentials as cred
 import locators
@@ -17,27 +19,28 @@ driver = UC.Chrome(options=op)
 # Open the specified URL
 driver.get("https://testnet.movementlabs.xyz")
 
-# Pause to allow page to load
-time.sleep(5)
-# click_cross_GALXE= driver.find_element(By.XPATH,locators.MOVEMENT_LAB_CROSS).click()
 
-click_connect_GALXE= driver.find_element(By.XPATH,locators.CONNECT_GLAXE_BTN).click()
-time.sleep(5)
+# click_cross_GALXE= driver.find_element(By.XPATH,locators.MOVEMENT_LAB_CROSS).click()
+click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
+click_connect_GALXE.click()
 
 try:
-    click_change_account = driver.find_element(By.XPATH,locators.CHANGE_ACCOUNT_XPATH).click()
-    click_login_GALXE= driver.find_element(By.XPATH,locators.GALXE_LOGIN_BTN_XPATH).click()
-except Exception as e:
-    print(f"NO prior Login: {e}")
+    click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
+    click_change_account.click()
+except:
+    print(f"NO prior Login found")
 
-time.sleep(4)
+click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
+click_login_GALXE.click()
+
 
 # connectby.twitter(driver)
 connectby.metamask(driver)
 
 #authenticate and wait
-Authenticate_x = driver.find_element(By.XPATH,locators.AUTHENTICATE_BTN_XPATH).click()
-time.sleep(6)
+Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHENTICATE_BTN_XPATH)))
+Authenticate_x.click()
+
 #reload
 input_username = driver.find_element(By.NAME,locators.PASSWORD_NAME).send_keys(cred.USERNAME)
 
