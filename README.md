@@ -41,4 +41,4 @@ This project automates the process of connecting Galxe to Movementlabs via Twitt
     ```
 
     You can get your chrome profile directory by navigating to chrome://version
-    image.png
+    ![alt text](https://github.com/parajulisagar/Movementlabs/blob/master/chromeprofile.png)
