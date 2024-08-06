@@ -4,4 +4,4 @@ PASSWORD='Lspciin@8'
 USERNAME='@sagar1271877'
 
 META_PASS='Lspciin@8'
-EXCEL_PATH = '/Users/sagar/Desktop/Movementlabs_authenticate/twitter.xlsx'
+CSV_PATH = '/Users/sagar/Desktop/Movementlabs_authenticate/twitter.csv'

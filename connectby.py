@@ -21,46 +21,50 @@ def twitter(driver):
     # Click the Twitter button to initiate login
     twitter_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
     twitter_btn.click()
-    
+    time.sleep(5)
     #navigate to pop up windows
     tabs = driver.window_handles
-    driver.switch_to.window(tabs[-1])
-    time.sleep(19)
+    time.sleep(5)
+    for t in tabs:
+        driver.switch_to.window(t)
+        print(driver.title)
+        if driver.title == "Log in to X / X":
+            print(driver.title)
     
-    df = pd.read_excel(cred.EXCEL_PATH)
-    
-    # Loop through each row in the DataFrame
-    for index, row in df.iterrows():
-        username = f"@{row['Username']}"
-        password = row['Password']
-        email = row['Email']
-    # Enter the username
-        input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
-        input_username.send_keys(username)
-        # time.sleep(1)
+            # df = pd.read_csv(cred.CSV_PATH)
+            
+            # Loop through each row in the DataFrame
+            # for index, row in df.iterrows():
+            #     username = f"@{row['Username']}"
+            #     password = row['Password']
+            #     email = row['Email']
+            # Enter the username
+            input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
+            input_username.send_keys(cred.USERNAME)
+            # time.sleep(1)
+            
+            # Click the next button
+            next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
+            next_btn.click()
+            try:
+                enter_email = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
+                enter_email.send_keys(cred.MAIL)
+                click_next= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
+                click_next.click()
+            except:
+                print(f"Verification does not need for this ID ")
+            
         
-        # Click the next button
-        next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
-        next_btn.click()
-        try:
-            enter_email = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
-            enter_email.send_keys(email)
-            click_next= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
-            click_next.click()
-        except:
-            print(f"Verification does not need for this ID ")
-        
-    
-        # Enter the password
-        input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
-        input_passowrd.send_keys(password)
-        
-        # Click the login button
-        login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
-        login_btn.click()
-        
-        time.sleep(1000)
-        
+            # Enter the password
+            input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
+            input_passowrd.send_keys(cred.PASSWORD)
+            
+            # Click the login button
+            login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
+            login_btn.click()
+            
+            time.sleep(1000)
+                
 
 def metamask(driver):
     """

@@ -1,26 +1,21 @@
-import undetected_chromedriver as UC
+import undetected_chromedriver as webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import credentials as cred
 import locators
 import connectby
+# from selenium import webdriver
 
-op= UC.ChromeOptions()
+op= webdriver.ChromeOptions()
 #change your profile directory here
 op.add_argument('user-data-dir=/Users/sagar/Library/Application Support/Google/Chrome')
 op.add_argument("--profile-directory={}".format("Profile 2"))
-# op.add_extension("buster.crx")
-# op.add_argument("--headless=new")
-driver = UC.Chrome(options=op)
-
-# Open the specified URL
+driver = webdriver.Chrome(options=op)
 driver.get("https://testnet.movementlabs.xyz")
-tabs = driver.window_handles
-print(tabs)
 
-# click_cross_GALXE= driver.find_element(By.XPATH,locators.MOVEMENT_LAB_CROSS).click()
 click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
 click_connect_GALXE.click()
 
@@ -29,25 +24,28 @@ try:
     click_change_account.click()
 except:
     print(f"No prior Login found")
-
+    
 click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
 click_login_GALXE.click()
 
+twitter_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
+twitter_btn.click()
+time.sleep(5)
 tabs = driver.window_handles
 print(tabs)
-connectby.twitter(driver)
-# connectby.metamask(driver)
 
-#authenticate and wait
-Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHENTICATE_BTN_XPATH)))
-Authenticate_x.click()
+print(driver.title)
 
-driver.refresh()
+for t in tabs:
+    driver.switch_to.window(t)
+    print(driver.title)
+    if driver.title == "Log in to X / X":
+        print(driver.title)
+        time.sleep(5)
+        input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
+        input_username.send_keys(cred.USERNAME)
+
+        next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
 
 
-# input_username = driver.find_element(By.NAME,locators.PASSWORD_NAME).send_keys(cred.USERNAME)
 
-
-
-# Close the browser
-driver.quit()

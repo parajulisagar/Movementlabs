@@ -4,7 +4,7 @@ TWITTER_BTN_XPATH='/html/body/div[3]/div[2]/div/div/div[1]/div/button[1]'
 # /html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[4]/label[1]/div[1]/div[2]/div[1]/input[1]
 
 #Twitter
-USERNAME_XPATH='/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[4]/label[1]/div[1]/div[2]/div[1]/input[1]'
+USERNAME_XPATH='/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[4]/label/div/div[2]/div/input'
 PASSWORD_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input'
 NEXT_BTN_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'
 LOGIN_BTN_XPATH='/html/body/div/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div/button'
@@ -16,9 +16,10 @@ VERIFY_NEXT_XPATH='/html/body/div/div/div/div/main/div/div/div/div[2]/div[2]/div
 AUTHENTICATE_BTN_XPATH='//*[@id="react-root"]/div/div/div[2]/main/div/div/div[2]/div/div/div[1]/div[3]/button'
 INPUT_USERNAME_XPATH="//input[@placeholder='Enter username']"
 CROSS_BTN='/html/body/div[3]/button'
-AUTHORIZE_BTN_XPATH='/html/body/div/main/div/div/div/div/div/div[4]/button[2]'
+AUTHORIZE_BTN_XPATH='/html/body/div[1]/div/div/div[2]/main/div/div/div[2]/div/div/div[1]/div[3]/button'
 MOVEMENT_LAB_CROSS='/html/body/div/div[2]/div/div/div/div[1]/svg'
-CHANGE_ACCOUNT_XPATH='/html/body/div/main/div/div/div/div/div/div[3]/div[2]/div/div[2]/div[2]'
+CHANGE_ACCOUNT_XPATH="//div[contains(text(),'Change Account')]"
+AUTHORIZE_GALXE_XPATH="//button[contains(text(),'Authorize')]"
 
 #metamask
 METAMASK_XPATH="//div[@class='flex items-center'][descendant::div[contains(text(),'MetaMask')]]"
