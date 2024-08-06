@@ -13,6 +13,7 @@ op= webdriver.ChromeOptions()
 #change your profile directory here
 op.add_argument('user-data-dir=/Users/sagar/Library/Application Support/Google/Chrome')
 op.add_argument("--profile-directory={}".format("Profile 2"))
+op.add_argument("--start-maximized")
 # op.add_argument("--headless")  # Enable headless mode
 # op.add_argument("--disable-gpu")  # Disable GPU acceleration (often recommended for headless mode)
 # op.add_argument("--no-sandbox") # Disables the sandbox for security
@@ -34,7 +35,7 @@ click_login_GALXE.click()
 
 twitter_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
 twitter_btn.click()
-time.sleep(5)
+time.sleep(10)
 tabs = driver.window_handles
 print(tabs)
 time.sleep(5)

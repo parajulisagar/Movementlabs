@@ -5,6 +5,8 @@ import pandas as pd
 import credentials as cred
 import locators
 import time
+from bs4 import BeautifulSoup as bs
+
 
 def twitter(driver):
     """
@@ -21,15 +23,16 @@ def twitter(driver):
     # Click the Twitter button to initiate login
     twitter_btn= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
     twitter_btn.click()
-    time.sleep(3)
+    time.sleep(5)
     #navigate to pop up windows
     tabs = driver.window_handles
-    time.sleep(8)
+       
     for t in tabs:
-        driver.switch_to.window(t)
+        # driver.switch_to.window(t)
+        time.sleep(2)
         if driver.title == "Log in to X / X":
             print(driver.title)
-            time.sleep(5)
+            time.sleep(2)
             
 
 def looping_signin_twitter(driver):
@@ -48,8 +51,9 @@ def looping_signin_twitter(driver):
             driver.refresh()
         print(index)
         time.sleep(10)
+        
         # Enter the username
-        input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
+        input_username =  WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.USERNAME_XPATH)))
         input_username.send_keys(username)
         # time.sleep(1)
         print('username')

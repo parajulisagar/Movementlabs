@@ -4,7 +4,7 @@ TWITTER_BTN_XPATH='/html/body/div[3]/div[2]/div/div/div[1]/div/button[1]'
 # /html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[4]/label[1]/div[1]/div[2]/div[1]/input[1]
 
 #Twitter
-USERNAME_XPATH='/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[4]/label/div/div[2]/div/input'
+USERNAME_XPATH="//input[@name='text'][@type='text']"
 PASSWORD_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input'
 NEXT_BTN_XPATH='/html/body/div/div/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'
 LOGIN_BTN_XPATH='/html/body/div/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div/button'
