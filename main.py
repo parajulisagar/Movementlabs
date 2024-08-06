@@ -40,6 +40,16 @@ connectby.twitter(driver)
 # connectby.metamask(driver)
 Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
 Authorize_x.click()
+parent_window= driver.current_window_handle
+handle_name=driver.title
+tabs = driver.window_handles
+time.sleep(5)
+for t in tabs:
+    driver.switch_to.window(t)
+    print(driver.title)
+    if driver.title == handle_name:
+        driver.close()
+            
 driver.refresh()
 try:
     click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
