@@ -28,7 +28,7 @@ try:
     click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
     click_change_account.click()
 except:
-    print(f"No prior Login found")
+    print("No prior Login found")
 
 click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
 click_login_GALXE.click()
