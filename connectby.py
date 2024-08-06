@@ -52,7 +52,7 @@ def twitter(driver):
                     click_next= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
                     click_next.click()
                 except:
-                    print(f"Verification does not need for this ID ")
+                    print("Verification does not need for this ID ")
                 
             
                 # Enter the password
@@ -120,7 +120,7 @@ def metamask(driver):
 def authorize(driver):
     Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
     Authorize_x.click()
-    parent_window= driver.current_window_handle
+    # parent_window= driver.current_window_handle
     handle_name=driver.title
     tabs = driver.window_handles
     time.sleep(5)

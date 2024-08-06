@@ -39,3 +39,6 @@ This project automates the process of connecting Galxe to Movementlabs via Twitt
     op.add_argument("--profile-directory={}".format("Profile 1"))
     driver = UC.Chrome(options=op)
     ```
+
+    You can get your chrome profile directory by navigating to chrome://version
+    image.png

@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import credentials as cred
 import locators
-import connectby
+# import connectby
 # from selenium import webdriver
 
 op= webdriver.ChromeOptions()
