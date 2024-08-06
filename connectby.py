@@ -28,7 +28,7 @@ def twitter(driver):
     tabs = driver.window_handles
        
     for t in tabs:
-        # driver.switch_to.window(t)
+        driver.switch_to.window(t)
         time.sleep(2)
         if driver.title == "Log in to X / X":
             print(driver.title)
@@ -166,7 +166,6 @@ def galxe(driver):
     # click_connect_GALXE.click()
     driver.execute_script("arguments[0].click();", click_connect_GALXE)
     time.sleep(10)
-    print('success')
     try:
         click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
         click_login_GALXE.click()
