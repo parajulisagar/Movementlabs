@@ -19,15 +19,14 @@ def twitter(driver):
     """
     
     # Click the Twitter button to initiate login
-    twitter_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
+    twitter_btn= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.TWITTER_BTN_XPATH)))
     twitter_btn.click()
-    time.sleep(5)
+    time.sleep(3)
     #navigate to pop up windows
     tabs = driver.window_handles
-    time.sleep(5)
+    time.sleep(8)
     for t in tabs:
         driver.switch_to.window(t)
-        print(driver.title)
         if driver.title == "Log in to X / X":
             print(driver.title)
             time.sleep(5)
@@ -41,21 +40,19 @@ def looping_signin_twitter(driver):
         username = f"@{row['Username']}"
         password = row['Password']
         email = row['Email']
-        try:
+        if index != 0:
             galxe(driver)
             change_account(driver)
             twitter(driver)
             driver.delete_all_cookies()
             driver.refresh()
-        except:
-            pass
-        
-        time.sleep()
+        print(index)
+        time.sleep(10)
         # Enter the username
         input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
         input_username.send_keys(username)
         # time.sleep(1)
-        
+        print('username')
         # Click the next button
         next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
         next_btn.click()
@@ -77,7 +74,7 @@ def looping_signin_twitter(driver):
         login_btn.click()
         
         time.sleep(10)
-        authorize(driver)
+        authorize_galxe(driver)
                 
 
 def metamask(driver):
@@ -130,7 +127,7 @@ def metamask(driver):
             pass
     driver.switch_to.window(parent_window_handle)
         
-def authorize(driver):
+def authorize_galxe(driver):
     Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
     Authorize_x.click()
     # parent_window= driver.current_window_handle
@@ -162,7 +159,15 @@ def authorize(driver):
 def galxe(driver):
     # click_cross_GALXE= driver.find_element(By.XPATH,locators.MOVEMENT_LAB_CROSS).click()
     click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
-    click_connect_GALXE.click()
+    # click_connect_GALXE.click()
+    driver.execute_script("arguments[0].click();", click_connect_GALXE)
+    time.sleep(10)
+    print('success')
+    try:
+        click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
+        click_login_GALXE.click()
+    except:
+        print("Already Loggedin")
 
     
 def change_account(driver):
@@ -177,13 +182,7 @@ def authorize(driver):
         Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_XPATH)))
         Authenticate_x.click()
     except:
-        print("No prior Login found")
-
-    try:
-        click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
-        click_login_GALXE.click()
-    except:
-        print("Already Loggedin")
+        print("Authroze button found")
 
 
 

@@ -13,6 +13,9 @@ op= webdriver.ChromeOptions()
 #change your profile directory here
 op.add_argument('user-data-dir=/Users/sagar/Library/Application Support/Google/Chrome')
 op.add_argument("--profile-directory={}".format("Profile 2"))
+# op.add_argument("--headless")  # Enable headless mode
+# op.add_argument("--disable-gpu")  # Disable GPU acceleration (often recommended for headless mode)
+# op.add_argument("--no-sandbox") # Disables the sandbox for security
 driver = webdriver.Chrome(options=op)
 driver.get("https://testnet.movementlabs.xyz")
 
@@ -34,9 +37,7 @@ twitter_btn.click()
 time.sleep(5)
 tabs = driver.window_handles
 print(tabs)
-
-print(driver.title)
-
+time.sleep(5)
 for t in tabs:
     driver.switch_to.window(t)
     print(driver.title)
@@ -45,7 +46,7 @@ for t in tabs:
         time.sleep(5)
         input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
         input_username.send_keys(cred.USERNAME)
-
+        time.sleep(10)
         next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
 
 
