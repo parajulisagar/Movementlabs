@@ -151,14 +151,24 @@ def galxe(driver):
     click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
     click_connect_GALXE.click()
 
+    # try:
+    #     click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
+    #     click_change_account.click()
+    # except:
+    #     print("No prior Login found")
     try:
-        click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
-        click_change_account.click()
+        Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_XPATH)))
+        Authenticate_x.click()
     except:
         print("No prior Login found")
-
-    click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
-    click_login_GALXE.click()
+        
+    try:
+        click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
+        click_login_GALXE.click()
+    except:
+        print("Already Loggedin")
+    
+    
 
 
 
