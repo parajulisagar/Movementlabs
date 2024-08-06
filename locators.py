@@ -19,7 +19,9 @@ CROSS_BTN='/html/body/div[3]/button'
 AUTHORIZE_BTN_XPATH='/html/body/div[1]/div/div/div[2]/main/div/div/div[2]/div/div/div[1]/div[3]/button'
 MOVEMENT_LAB_CROSS='/html/body/div/div[2]/div/div/div/div[1]/svg'
 CHANGE_ACCOUNT_XPATH="//div[contains(text(),'Change Account')]"
-AUTHORIZE_GALXE_XPATH="//button[contains(text(),'Authorize')]"
+AUTHORIZE_APP_GALXE_XPATH="/html/body/div[1]/div/div/div[2]/main/div/div/div[2]/div/div/div[1]/div[3]/button"
+AUTHORIZE_XPATH="//button[contains(text(),'Authorize')]"
+LOGOUT_XPATH="//button[contains(text(),'Logout')]"
 
 #metamask
 METAMASK_XPATH="//div[@class='flex items-center'][descendant::div[contains(text(),'MetaMask')]]"

@@ -63,7 +63,7 @@ def twitter(driver):
                 login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
                 login_btn.click()
                 
-                time.sleep(1000)
+                time.sleep(10)
                 
 
 def metamask(driver):

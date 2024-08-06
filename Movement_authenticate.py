@@ -35,12 +35,25 @@ click_login_GALXE.click()
 
 tabs = driver.window_handles
 print(tabs)
+
 connectby.twitter(driver)
 # connectby.metamask(driver)
-
+Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
+Authorize_x.click()
+driver.refresh()
+try:
+    click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
+    click_login_GALXE.click()
+    Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
+    Authorize_x.click()
+except:
+    pass
 #authenticate and wait
-Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHENTICATE_BTN_XPATH)))
+Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_XPATH)))
 Authenticate_x.click()
+Logout = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.LOGOUT_XPATH)))
+Logout.click()
+
 
 driver.refresh()
 
