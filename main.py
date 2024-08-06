@@ -1,7 +1,7 @@
 import undetected_chromedriver as UC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
 import connectby
 
 op= UC.ChromeOptions()
@@ -17,6 +17,7 @@ driver.get("https://testnet.movementlabs.xyz")
 
 connectby.galxe(driver)
 connectby.twitter(driver)
+connectby.looping_signin_twitter(driver)
 
 
 # Close the browser

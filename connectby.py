@@ -30,41 +30,54 @@ def twitter(driver):
         print(driver.title)
         if driver.title == "Log in to X / X":
             print(driver.title)
+            time.sleep(5)
+            
+
+def looping_signin_twitter(driver):
+    df = pd.read_csv(cred.CSV_PATH)
+
+    # Loop through each row in the DataFrame
+    for index, row in df.iterrows():
+        username = f"@{row['Username']}"
+        password = row['Password']
+        email = row['Email']
+        try:
+            galxe(driver)
+            change_account(driver)
+            twitter(driver)
+            driver.delete_all_cookies()
+            driver.refresh()
+        except:
+            pass
+        
+        time.sleep()
+        # Enter the username
+        input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
+        input_username.send_keys(username)
+        # time.sleep(1)
+        
+        # Click the next button
+        next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
+        next_btn.click()
+        try:
+            enter_email = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
+            enter_email.send_keys(email)
+            click_next= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
+            click_next.click()
+        except:
+            print("Verification does not need for this ID ")
+        
     
-            df = pd.read_csv(cred.CSV_PATH)
-            
-            # Loop through each row in the DataFrame
-            for index, row in df.iterrows():
-                username = f"@{row['Username']}"
-                password = row['Password']
-                email = row['Email']
-                # Enter the username
-                input_username = driver.find_element(By.XPATH, locators.USERNAME_XPATH)
-                input_username.send_keys(username)
-                # time.sleep(1)
-                
-                # Click the next button
-                next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
-                next_btn.click()
-                try:
-                    enter_email = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
-                    enter_email.send_keys(email)
-                    click_next= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
-                    click_next.click()
-                except:
-                    print("Verification does not need for this ID ")
-                
-            
-                # Enter the password
-                input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
-                input_passowrd.send_keys(password)
-                
-                # Click the login button
-                login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
-                login_btn.click()
-                
-                time.sleep(10)
-                authorize(driver)
+        # Enter the password
+        input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
+        input_passowrd.send_keys(password)
+        
+        # Click the login button
+        login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
+        login_btn.click()
+        
+        time.sleep(10)
+        authorize(driver)
                 
 
 def metamask(driver):
@@ -89,7 +102,7 @@ def metamask(driver):
     # Navigate to the popup window
     tabs = driver.window_handles
     driver.switch_to.window(tabs[-1])
-   
+    
     time.sleep(3)
     if driver.title == "MetaMask":
         # try:
@@ -151,26 +164,26 @@ def galxe(driver):
     click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
     click_connect_GALXE.click()
 
-    # try:
-    #     click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
-    #     click_change_account.click()
-    # except:
-    #     print("No prior Login found")
+    
+def change_account(driver):
+    try:
+        click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
+        click_change_account.click()
+    except:
+        print("No prior Login found")
+        
+def authorize(driver):
     try:
         Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_XPATH)))
         Authenticate_x.click()
     except:
         print("No prior Login found")
-        
+
     try:
         click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
         click_login_GALXE.click()
     except:
         print("Already Loggedin")
-    
-    
-
-
 
 
 

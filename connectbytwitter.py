@@ -18,6 +18,7 @@ driver.get("https://testnet.movementlabs.xyz")
 
 click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
 click_connect_GALXE.click()
+driver.delete_all_cookies()
 
 try:
     click_change_account = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CHANGE_ACCOUNT_XPATH)))
