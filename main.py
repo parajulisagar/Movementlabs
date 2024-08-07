@@ -20,7 +20,7 @@ driver.maximize_window()
 connectby.galxe(driver)
 connectby.twitter(driver)
 connectby.looping_signin_twitter(driver)
-
+connectby.quests(driver)
 
 # Close the browser
 driver.quit()

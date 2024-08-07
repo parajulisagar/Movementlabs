@@ -188,8 +188,18 @@ def authorize(driver):
 
 
 
-
-
+def quests(driver):
+    driver.navigate('https://testnet.movementlabs.xyz/quests')
+    quest = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.QUEST_XPATH)))
+    quest.click()
+    handle_name=driver.title
+    tabs = driver.window_handles
+    time.sleep(5)
+    for t in tabs:
+        driver.switch_to.window(t)
+        if t == tabs[-1]:
+            signup_email_and_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.EMAIL_X_SIGNUP_XPATH)))
+            signup_email_and_x.click()
 
 
 

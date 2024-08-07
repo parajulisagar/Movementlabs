@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import credentials as cred
 import locators
+import readmail
 # import connectby
 # from selenium import webdriver
 
@@ -71,8 +72,10 @@ for t in tabs:
         login_btn.click()
         time.sleep(3)
         try:  
+            subject=readmail.fetch_latest_email_subject(cred.MAIL, cred.APPPASSWORD)
+            code=subject.split(" ")[-1]
             email = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locators.EMAIL_TAG_NAME)))
-            email.send_keys(cred.MAIL)
+            email.send_keys(code)
             time.sleep(4)
             next = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locators.NEXT_TAG_NAME)))
             next.click()
@@ -105,6 +108,16 @@ for t in tabs:
         Authenticate_x.click()
         
         time.sleep(10)
-        
+        driver.navigate('https://testnet.movementlabs.xyz/quests')
+        quest = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.QUEST_XPATH)))
+        quest.click()
+        handle_name=driver.title
+        tabs = driver.window_handles
+        time.sleep(5)
+        for t in tabs:
+            driver.switch_to.window(t)
+            if t == tabs[-1]:
+                signup_email_and_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.EMAIL_X_SIGNUP_XPATH)))
+                signup_email_and_x.click()
         
 
