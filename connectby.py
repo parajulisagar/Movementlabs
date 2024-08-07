@@ -5,7 +5,6 @@ import pandas as pd
 import credentials as cred
 import locators
 import time
-from bs4 import BeautifulSoup as bs
 
 
 def twitter(driver):
