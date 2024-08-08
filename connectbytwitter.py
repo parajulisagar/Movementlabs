@@ -6,15 +6,20 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import credentials as cred
 import locators
-import readmail
+import proxies
+
 # import connectby
 # from selenium import webdriver
+# Function to read proxies from a file
+proxy_list=proxies.read_proxies_from_file(cred.PROXY_PATH)
+random_proxy=proxies.get_random_proxy(proxy_list)
 
 op= webdriver.ChromeOptions()
 #change your profile directory here
 op.add_argument('user-data-dir=/Users/lanisha/Library/Application Support/Google/Chrome')
 op.add_argument("--profile-directory={}".format("Profile 2"))
 op.add_argument("--start-maximized")
+op.add_argument(f'--proxy-server={random_proxy}')
 # op.add_argument("--headless")  # Enable headless mode
 # op.add_argument("--disable-gpu")  # Disable GPU acceleration (often recommended for headless mode)
 # op.add_argument("--no-sandbox") # Disables the sandbox for security
@@ -57,29 +62,31 @@ for t in tabs:
         try:
             enter_email = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
             enter_email.send_keys(cred.MAIL)
-            time.sleep(3)
+            time.sleep(5)
             click_next= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
             click_next.click()
-            time.sleep(2)
+            time.sleep(4)
         except:
             print("Verification does not need for this ID ")
         input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
         input_passowrd.send_keys(cred.PASSWORD)
-        time.sleep(2)
+        time.sleep(3)
         
         # Click the login button
         login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
         login_btn.click()
-        time.sleep(3)
-        try:  
+        time.sleep(6)
+        try:
+            import readmail
             subject=readmail.fetch_latest_email_subject(cred.MAIL, cred.APPPASSWORD)
             code=subject.split(" ")[-1]
+            print(code)
             email = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locators.EMAIL_TAG_NAME)))
             email.send_keys(code)
-            time.sleep(4)
+            time.sleep(5)
             next = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locators.NEXT_TAG_NAME)))
             next.click()
-            time.sleep(1)
+            time.sleep(3)
         except:
             pass 
         

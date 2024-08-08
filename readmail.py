@@ -47,5 +47,5 @@ subject=fetch_latest_email_subject(cred.MAIL, cred.APPPASSWORD)
 code=subject.split(" ")[-1]
 print(code)
 
-latest_mail=fetch_latest_email(cred.MAIL, cred.APPPASSWORD)
-print(latest_mail)
+# latest_mail=fetch_latest_email(cred.MAIL, cred.APPPASSWORD)
+# print(latest_mail)
