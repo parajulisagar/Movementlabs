@@ -14,6 +14,7 @@ if __name__ == '__main__':
 # Function to read proxies from a file
     proxy_list=proxies.read_proxies_from_file(cred.PROXY_PATH)
     random_proxy=proxies.get_random_proxy(proxy_list)
+    print(random_proxy)
 
     op= webdriver.ChromeOptions()
     #change your profile directory here
@@ -27,7 +28,7 @@ if __name__ == '__main__':
     driver = webdriver.Chrome(options=op)
     driver.get("https://testnet.movementlabs.xyz")
 
-    click_connect_GALXE = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
+    click_connect_GALXE = WebDriverWait(driver, 40).until(EC.element_to_be_clickable((By.XPATH, locators.CONNECT_GLAXE_BTN)))
     driver.execute_script("arguments[0].click();", click_connect_GALXE)
 
     # driver.delete_all_cookies()

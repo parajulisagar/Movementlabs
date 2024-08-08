@@ -9,4 +9,4 @@ CSV_PATH = '/Users/sagar/Desktop/Movementlabs_authenticate/twitter.csv'
 
 # APPPASSWORD="weom head hkyq uuwb"
 APPPASSWORD="dujt eugc fumn vlxn"
-PROXY_PATH='/Users/sagar/Desktop/Movementlabs_authenticate/proxylist.txt'
+PROXY_PATH='/Users/sagar/Desktop/Movementlabs_authenticate/valid_proxy_list.txt'
