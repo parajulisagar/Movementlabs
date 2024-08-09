@@ -1,5 +1,3 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from Reuse import selector, GalxePage
 from PageObjects import TwitterPageObjects

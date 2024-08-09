@@ -31,7 +31,7 @@ class selector:
         elif selectorType == "TAG_NAME":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locator))).send_keys(keys)
 
-        elif selectorType == "XPath":
+        elif selectorType == "XPATH":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, locator))).send_keys(keys)
 
     def click_element(self,selectorType,locator):
@@ -56,7 +56,7 @@ class selector:
         elif selectorType == "TAG_NAME":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locator))).click()
 
-        elif selectorType == "XPath":
+        elif selectorType == "XPATH":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, locator))).click()
             
     def get_selector(self,selectorType,locator):
@@ -81,5 +81,5 @@ class selector:
         elif selectorType == "TAG_NAME":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.TAG_NAME, locator)))
 
-        elif selectorType == "XPath":
+        elif selectorType == "XPATH":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, locator)))
