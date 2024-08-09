@@ -4,6 +4,7 @@ from PageObjects import TwitterPageObjects
 from config.credentials import CRED
 import time
 import pandas as pd
+import ReadMail
 
 
 class TwitterPage:
@@ -19,7 +20,6 @@ class TwitterPage:
         time.sleep(5)
         #navigate to pop up windows
         tabs = self.driver.window_handles
-        
         for t in tabs:
             self.driver.switch_to.window(t)
             time.sleep(2)
@@ -30,7 +30,6 @@ class TwitterPage:
                 
     def looping_signin_twitter(self):
         df = pd.read_csv(CRED.CSV_PATH)
-
         # Loop through each row in the DataFrame
         for index, row in df.iterrows():
             username = f"@{row['Username']}"
@@ -38,8 +37,8 @@ class TwitterPage:
             email = row['Email']
             if index != 0:
                 self.GalxePageObj.click_connect_galxe(self.driver)
-                change_account(driver)
-                twitter(driver)
+                self.GalxePageObj.change_account(self.driver)
+                TwitterPage.Take_Me_To_Twitter(self.driver)
                 self.driver.delete_all_cookies()
                 self.driver.refresh()
             print(index)
@@ -64,7 +63,16 @@ class TwitterPage:
             
             time.sleep(10)
             self.GalxePageObj.authorize_galxe(self.driver)
-        
+            try:
+                subject=ReadMail.ReadMail.fetch_latest_email_code(CRED.MAIL, CRED.APPPASSWORD)
+                code=subject.split(" ")[-1]
+                print(code)
+                self.selected.input_text("NAME",self.TwitterPageObj.EMAIL_TAG_NAME,code)
+                time.sleep(5)
+                self.selected.click_element("XPATH",self.TwitterPageObj.NEXT_TAG_NAME)
+                time.sleep(3)
+            except:
+                pass 
         
 
 
