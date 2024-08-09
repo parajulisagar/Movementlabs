@@ -24,30 +24,24 @@ class GlaxePage:
         except:
             print("Already Loggedin")
         
-    def authorize_galxe(driver):
-        Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
-        Authorize_x.click()
+    def authorize_galxe(self):
+        self.selected.element_click("XPATH",self.GalexPageObj.AUTHORIZE_APP_GALXE_XPATH)
         # parent_window= driver.current_window_handle
-        handle_name=driver.title
-        tabs = driver.window_handles
+        handle_name=self.driver.title
+        tabs = self.driver.window_handles
         time.sleep(5)
         for t in tabs:
-            driver.switch_to.window(t)
-            print(driver.title)
-            if driver.title == handle_name:
-                driver.close()
+            self.driver.switch_to.window(t)
+            print(self.driver.title)
+            if self.driver.title == handle_name:
+                self.driver.close()
                     
-        driver.refresh()
+        self.driver.refresh()
         try:
-            click_login_GALXE= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.GALXE_LOGIN_BTN_XPATH)))
-            click_login_GALXE.click()
-            Authorize_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_APP_GALXE_XPATH)))
-            Authorize_x.click()
+            self.selected.element_click("XPATH",self.GalexPageObj.GALXE_LOGIN_BTN_XPATH)
+            self.selected.element_click("XPATH",self.GalexPageObj.AUTHORIZE_APP_GALXE_XPATH)
         except:
             pass
         #authenticate and wait
-        Authenticate_x = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.AUTHORIZE_XPATH)))
-        Authenticate_x.click()
-        Logout = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, locators.LOGOUT_XPATH)))
-        Logout.click()
+        self.selected.element_click("XPATH",self.GalexPageObj.AUTHORIZE_XPATH)
 
