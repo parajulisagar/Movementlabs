@@ -34,7 +34,7 @@ class selector:
         elif selectorType == "XPath":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.XPATH, locator))).send_keys(keys)
 
-    def element_click(self,selectorType,locator):
+    def click_element(self,selectorType,locator):
         if selectorType == "CLASS_NAME":
             WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.CLASS_NAME, locator))).click()
 

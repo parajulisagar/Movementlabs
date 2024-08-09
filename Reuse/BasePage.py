@@ -12,21 +12,7 @@ class Basepage:
 
     def __init__(self, driver):
         self.driver = driver
-
-
-    def do_click(self,locator,):
-        WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(locator)).click()
-
-    def do_send_key(self,locator, text):
-        WebDriverWait(self.driver,10).until(EC.visibility_of_element_located(locator)).send_keys(text)
-
-    def do_get_element(self,locator):
-       element= WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
-       return element.text
-
-    def get_title(self,title):
-       WebDriverWait(self.driver, 10).until(EC.title_is(title))
-       return self.driver.title
+        
 
     def Take_Me_To_HomePage(self):
         self.start_obj = executeBrowser.start_page(self.driver)

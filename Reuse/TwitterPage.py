@@ -1,10 +1,11 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-import pandas as pd
-from Reuse import selector
+from Reuse import selector, GalxePage
 from PageObjects import TwitterPageObjects
+from config.credentials import CRED
 import time
+import pandas as pd
 
 
 class TwitterPage:
@@ -12,11 +13,11 @@ class TwitterPage:
         self.driver = driver
         self.selected = selector.selector(self.driver)
         self.TwitterPageObj=TwitterPageObjects.TwitterPageObject
+        self.GalxePageObj=GalxePage.GlaxePage
         
 
     def Take_Me_To_Twitter(self):
-        
-        self.selected.element_click("XPATH",self.TwitterPageObj.TWITTER_BTN_XPATH)
+        self.selected.click_element("XPATH",self.TwitterPageObj.TWITTER_BTN_XPATH)
         time.sleep(5)
         #navigate to pop up windows
         tabs = self.driver.window_handles
@@ -29,8 +30,8 @@ class TwitterPage:
                 time.sleep(2)
                 
                 
-    def looping_signin_twitter(driver):
-        df = pd.read_csv(cred.CSV_PATH)
+    def looping_signin_twitter(self):
+        df = pd.read_csv(CRED.CSV_PATH)
 
         # Loop through each row in the DataFrame
         for index, row in df.iterrows():
@@ -38,41 +39,33 @@ class TwitterPage:
             password = row['Password']
             email = row['Email']
             if index != 0:
-                galxe(driver)
+                self.GalxePageObj.click_connect_galxe(self.driver)
                 change_account(driver)
                 twitter(driver)
-                driver.delete_all_cookies()
-                driver.refresh()
+                self.driver.delete_all_cookies()
+                self.driver.refresh()
             print(index)
             time.sleep(10)
             
             # Enter the username
-            input_username =  WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.USERNAME_XPATH)))
-            input_username.send_keys(username)
-            # time.sleep(1)
-            print('username')
+            self.selected.input_text("XPATH",self.TwitterPageObj.USERNAME_XPATH,CRED.USERNAME)
             # Click the next button
-            next_btn= WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.NEXT_BTN_XPATH)))
-            next_btn.click()
+            self.selected.click_element("XPATH",self.TwitterPageObj.NEXT_BTN_XPATH)
             try:
-                enter_email = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_MAIL_INPUT_XPATH)))
-                enter_email.send_keys(email)
-                click_next= WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, locators.VERIFY_NEXT_XPATH)))
-                click_next.click()
+                # Enter email
+                self.selected.input_text("XPATH",self.TwitterPageObj.VERIFY_MAIL_INPUT_XPATH,CRED.MAIL)
+                self.selected.click_element("XPATH",self.TwitterPageObj.VERIFY_NEXT_XPATH)
             except:
                 print("Verification does not need for this ID ")
             
-        
             # Enter the password
-            input_passowrd = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.PASSWORD_XPATH)))
-            input_passowrd.send_keys(password)
+            self.selected.input_text("XPATH",self.TwitterPageObj.PASSWORD_XPATH,CRED.PASSWORD)
             
             # Click the login button
-            login_btn = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, locators.LOGIN_BTN_XPATH)))
-            login_btn.click()
+            self.selected.click_element("XPATH",self.TwitterPageObj.LOGIN_BTN_XPATH)
             
             time.sleep(10)
-            authorize_galxe(driver)
+            self.GalxePageObj.authorize_galxe(self.driver)
         
         
 

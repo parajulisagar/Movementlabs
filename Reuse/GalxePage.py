@@ -38,10 +38,10 @@ class GlaxePage:
                     
         self.driver.refresh()
         try:
-            self.selected.element_click("XPATH",self.GalexPageObj.GALXE_LOGIN_BTN_XPATH)
-            self.selected.element_click("XPATH",self.GalexPageObj.AUTHORIZE_APP_GALXE_XPATH)
+            self.selected.click_element("XPATH",self.GalexPageObj.GALXE_LOGIN_BTN_XPATH)
+            self.selected.click_element("XPATH",self.GalexPageObj.AUTHORIZE_APP_GALXE_XPATH)
         except:
             pass
         #authenticate and wait
-        self.selected.element_click("XPATH",self.GalexPageObj.AUTHORIZE_XPATH)
+        self.selected.click_element("XPATH",self.GalexPageObj.AUTHORIZE_XPATH)
 
