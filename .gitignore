@@ -3,6 +3,9 @@ new.py
 *.pyc
 __pycache__/
 Config/__pycache__/
+Config/credentials/
+Config/gmailCred/
+Config/twitterCred/
 PageObjects/__pycache__/
 Reuse/__pycache__/
 Tests/__pycache__/
