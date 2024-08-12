@@ -1,1 +1,8 @@
-env.txt
+.env
+new.py
+*.pyc
+__pycache__/
+Config/__pycache__/
+PageObjects/__pycache__/
+Reuse/__pycache__/
+Tests/__pycache__/
