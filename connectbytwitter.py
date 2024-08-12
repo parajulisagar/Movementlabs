@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 import credentials as cred
 import locators
+import os
 # import proxies
 
 
@@ -15,11 +16,14 @@ import locators
 # proxy_list=proxies.read_proxies_from_file(cred.PROXY_PATH)
 # random_proxy=proxies.get_random_proxy(proxy_list)
 # print(random_proxy)
-
+profile_directory= os.getenv("PROFILE_DIRECTORY")
+chrome_profile= os.getenv("CHROME_PROFILE")
 op= webdriver.ChromeOptions()
 #change your profile directory here
 op.add_argument('user-data-dir=/Users/sagar/Library/Application Support/Google/Chrome')
 op.add_argument("--profile-directory={}".format("Profile 2"))
+# op.add_argument("--user-data-dir={}".format(profile_directory))
+# op.add_argument("--profile-directory={}".format(chrome_profile))
 op.add_argument("--start-maximized")
 # op.add_argument(f'--proxy-server={random_proxy}')
 # op.add_argument("--headless")  # Enable headless mode

@@ -14,16 +14,15 @@ class MetamaskPage:
         self.selected = selector.selector(self.driver)
         self.MetamaskPageObj=MetamaskPageObjects.MetamaskPageObject()
 
-    def MetamaskConnect(self):
+    def MetamaskConnect(self, driver):
         """
         Automates the login process for MetaMask using Selenium WebDriver.
-        
-
         This function performs the following steps:
         1. Clicks the MetaMask login button.
         2. Switches to the newly opened MetaMask login popup window.
         3. Navigates through the MetaMask login confirmation steps.
         """
+        print(self.driver.title)
         parent_window_handle= self.driver.current_window_handle
         try:
             # Click the MetaMask button to initiate login
@@ -58,4 +57,5 @@ class MetamaskPage:
             except:
                 pass
         self.driver.switch_to.window(parent_window_handle)
+        return self.driver
   

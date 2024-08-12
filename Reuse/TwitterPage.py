@@ -15,7 +15,7 @@ class TwitterPage:
         self.GalxePageObj=GalxePage.GlaxePage
         
 
-    def Take_Me_To_Twitter(self):
+    def Take_Me_To_Twitter(self, driver):
         self.selected.click_element("XPATH",self.TwitterPageObj.TWITTER_BTN_XPATH)
         time.sleep(5)
         #navigate to pop up windows
@@ -26,9 +26,10 @@ class TwitterPage:
             if self.driver.title == "Log in to X / X":
                 print(self.driver.title)
                 time.sleep(2)
+        return self.driver
                 
                 
-    def looping_signin_twitter(self):
+    def looping_signin_twitter(self, driver):
         df = pd.read_csv(CRED.CSV_PATH)
         # Loop through each row in the DataFrame
         for index, row in df.iterrows():
@@ -73,6 +74,7 @@ class TwitterPage:
                 time.sleep(3)
             except:
                 pass 
+        return self.driver
         
 
 
