@@ -1,0 +1,9 @@
+.env
+new.py
+*.pyc
+__pycache__/
+Config
+PageObjects/__pycache__/
+Reuse/__pycache__/
+Tests/__pycache__/
+.credentials
