@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import undetected_chromedriver as UC
 from Reuse import selector, ReadMail
 from PageObjects import GalxePageObjects
-from configs.credentials import CRED
+from config.credentials import CRED
 import time
 import sys
 path = r'/Users/sagar/Desktop/Movementlabs_authenticate'
