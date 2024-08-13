@@ -1,7 +1,7 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-import undetected_chromedriver as UC
+import sys
+path = r'/Users/sagar/Desktop/Movementlabs_authenticate'
+sys.path.insert(0,path)
+
 from Reuse import selector
 from PageObjects import MetamaskPageObjects
 from config.credentials import CRED
@@ -36,16 +36,16 @@ class MetamaskPage:
         for t in tabs:
             self.driver.switch_to.window(t)
             if self.driver.title == "MetaMask":
-                # try:
-                print(self.driver.title)
-                time.sleep(20)
-                self.selected.click_element("XPATH",self.MetamaskPageObj.METAMASK_PASSWORD_XPATH)
-                # self.selected.input_text("TAG_NAME",self.MetamaskPageObj.PASSWORD_TAG_NAME,CRED.META_PASS)
-                self.selected.input_text("XPATH",self.MetamaskPageObj.METAMASK_PASSWORD_ID,CRED.META_PASS)
-                
-                self.selected.click_element("XPATH",self.MetamaskPageObj.METAMASK_UNLOCK_XPATH)
-                # except:
-                print(f"Already Unlocked")
+                try:
+                    print(self.driver.title)
+                    time.sleep(10)
+                    self.selected.click_element("XPATH",self.MetamaskPageObj.METAMASK_PASSWORD_XPATH)
+                    # self.selected.input_text("TAG_NAME",self.MetamaskPageObj.PASSWORD_TAG_NAME,CRED.META_PASS)
+                    self.selected.input_text("XPATH",self.MetamaskPageObj.METAMASK_PASSWORD_ID,CRED.META_PASS)
+                    
+                    self.selected.click_element("XPATH",self.MetamaskPageObj.METAMASK_UNLOCK_XPATH)
+                except:
+                    print(f"Already Unlocked")
 
                 # Click the next button in MetaMask
                 self.selected.click_element("XPATH",self.MetamaskPageObj.METAMASK_NEXT_BTN_XPATH)
@@ -59,4 +59,3 @@ class MetamaskPage:
                 
         self.driver.switch_to.window(parent_window_handle)
         return self.driver
-  
