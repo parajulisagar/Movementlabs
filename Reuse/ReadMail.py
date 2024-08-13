@@ -3,12 +3,20 @@ import imaplib
 from email import policy
 from email.header import decode_header
 import credentials as cred
+from bs4 import BeautifulSoup
+
+import sys
+path = r'/Users/sagar/Desktop/Movementlabs_authenticate'
+sys.path.insert(0,path)
 
 class ReadMail:
     def __init__(self,driver):
         self.driver = driver
         # self.selectorType = selectorType
         # self.identifier = identifier
+    def text_cleaner(self,text):
+    # Remove whitespace and newlines.
+        return " ".join(text.split())
 
     def fetch_latest_email(self, username, password):
         # Fetch the latest email from the inbox.
@@ -25,6 +33,21 @@ class ReadMail:
         except Exception as e:
             print("An error occurred:", e)
             return None
+        
+        
+        
+    def parse_email_for_otp(self, email_message):
+        # Parse email content for OTP.
+        for part in email_message.walk():
+            content_type = part.get_content_type()
+            if content_type == "text/plain" or content_type == "text/html":
+                body = part.get_payload(decode=True).decode()
+                soup = BeautifulSoup(body, "html.parser")
+                body_text = soup.get_text()
+                cleaned_body = self.text_cleaner(body_text)
+                print(cleaned_body)
+                otp=cleaned_body.split(" ")[0]
+        return otp
         
     def fetch_latest_email_code(self, username, password):
             # Fetch the latest email from the inbox.
@@ -46,7 +69,7 @@ class ReadMail:
             except Exception as e:
                 print("An error occurred:", e)
                 return None
-            
+
             
 
     

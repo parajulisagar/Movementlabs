@@ -12,3 +12,9 @@ class GalxePageObject:
     AUTHORIZE_APP_GALXE_XPATH="/html/body/div[1]/div/div/div[2]/main/div/div/div[2]/div/div/div[1]/div[3]/button"
     AUTHORIZE_XPATH="//button[contains(text(),'Authorize')]"
     LOGOUT_XPATH="//button[contains(text(),'Logout')]"
+    
+    #for quests
+    INPUT_WALLET_ADDRESS_XPATH="//input[@placeholder='Email Address']"
+    SEND_CODE_XPATH="//button[contains(text(),'Send a code')]"
+    INPUT_CODE_XPATH="//input[@placeholder='Enter code']"
+    VERIFY_BTN_XPATH="/html/body/div/main/div/main/div[2]/div/div[1]/div[2]/div[3]/button"

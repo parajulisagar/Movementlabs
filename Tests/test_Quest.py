@@ -20,6 +20,7 @@ class TestQuest(unittest.TestCase):
         self.driver=self.TwitterObj.looping_signin_twitter(self.driver)      
         self.QuestObj = QuestPage.QuestPage(self.driver)
         self.driver=self.QuestObj.Quests(self.driver) 
+        self.driver=self.GalxePageObj.verify_address(self.driver)
 
 if __name__ == "__main__":
     unittest.main()

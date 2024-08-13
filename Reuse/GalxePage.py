@@ -2,10 +2,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import undetected_chromedriver as UC
-from Reuse import selector
+from Reuse import selector, ReadMail
 from PageObjects import GalxePageObjects
+from config.credentials import CRED
 import time
-
+import sys
+path = r'/Users/sagar/Desktop/Movementlabs_authenticate'
+sys.path.insert(0,path)
 
 class GalxePage:
     def __init__(self, driver):
@@ -60,4 +63,19 @@ class GalxePage:
         except:
             print("Authroze button found")
         return self.driver
+    
+    def verify_address(self, driver):
+        self.selected.input_text("XPATH",self.GalexPageObj.INPUT_WALLET_ADDRESS_XPATH,CRED.MAIL)
+        self.selected.click_element("XPATH",self.GalexPageObj.SEND_CODE_XPATH)
+        self.ReadMailObj = ReadMail.ReadMail(self.driver)
+        email_message = self.ReadMailObj.fetch_latest_email(CRED.MAIL, CRED.PASSWORD)
+        if email_message:
+            otp = self.ReadMailObj.parse_email_for_otp(email_message)
+        self.selected.input_text("XPATH",self.GalexPageObj.SEND_CODE_XPATH,otp)
+        self.selected.click_element("XPATH",self.GalexPageObj.VERIFY_BTN_XPATH)
+        
+        
+        
+        
+        
 
