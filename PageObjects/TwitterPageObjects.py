@@ -8,3 +8,4 @@ class TwitterPageObject:
     EMAIL_TAG_NAME='input'
     NEXT_TAG_NAME='button'
     TWITTER_BTN_XPATH='/html/body/div[3]/div[2]/div/div/div[1]/div/button[1]'
+    

@@ -56,6 +56,7 @@ class MetamaskPage:
                     self.selected.click_element("XPATH",self.MetamaskPageObj.METAMASK_SIGNIN_BTN_XPATH)
                 except:
                     pass
+                
         self.driver.switch_to.window(parent_window_handle)
         return self.driver
   
