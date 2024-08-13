@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import undetected_chromedriver as UC
 from Reuse import selector
 from PageObjects import MetamaskPageObjects
-from config.credentials import CRED
+from configs.credentials import CRED
 import time
 
 

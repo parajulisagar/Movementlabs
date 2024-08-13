@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from Reuse import selector, GalxePage
 from PageObjects import TwitterPageObjects
-from config.credentials import CRED
+from configs.credentials import CRED
 import time
 import pandas as pd
 import ReadMail
