@@ -29,23 +29,26 @@ class GalxePage:
     def authorize_galxe(self, driver):
         self.selected.click_element("XPATH",self.GalexPageObj.AUTHORIZE_APP_GALXE_XPATH)
         # parent_window= driver.current_window_handle
-        handle_name=self.driver.title
-        tabs = self.driver.window_handles
-        time.sleep(5)
-        for t in tabs:
-            self.driver.switch_to.window(t)
-            print(self.driver.title)
-            if self.driver.title == handle_name:
-                self.driver.close()
+        # handle_name=self.driver.title
+        # tabs = self.driver.window_handles
+        # time.sleep(5)
+        # for t in tabs:
+        #     self.driver.switch_to.window(t)
+        #     print(self.driver.title)
+        #     if self.driver.title == handle_name:
+        #         self.driver.close()
                     
-        self.driver.refresh()
+        # self.driver.refresh()
         try:
             self.selected.click_element("XPATH",self.GalexPageObj.GALXE_LOGIN_BTN_XPATH)
             self.selected.click_element("XPATH",self.GalexPageObj.AUTHORIZE_APP_GALXE_XPATH)
         except:
             pass
         #authenticate and wait
-        self.selected.click_element("XPATH",self.GalexPageObj.AUTHORIZE_XPATH)
+        try:
+            self.selected.click_element("XPATH",self.GalexPageObj.AUTHORIZE_XPATH)
+        except:
+            pass
         return self.driver
         
     def change_account(self, driver):
@@ -64,6 +67,7 @@ class GalxePage:
             print("Authroze button found")
         return self.driver
     
+    # function for quests to verify email
     def verify_address(self, driver):
         self.selected.input_text("XPATH",self.GalexPageObj.INPUT_WALLET_ADDRESS_XPATH,CRED.MAIL)
         self.selected.click_element("XPATH",self.GalexPageObj.SEND_CODE_XPATH)

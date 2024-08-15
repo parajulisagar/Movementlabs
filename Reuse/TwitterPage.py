@@ -15,6 +15,8 @@ class TwitterPage:
         self.selected = selector.selector(self.driver)
         self.TwitterPageObj=TwitterPageObjects.TwitterPageObject
         self.GalxePageObj=GalxePageObjects.GalxePageObject
+        self.GalxePageObject = GalxePage.GalxePage(self.driver)
+        
         
         
     def Take_Me_To_Twitter(self, driver):
@@ -28,6 +30,12 @@ class TwitterPage:
             if self.driver.title == "Log in to X / X":
                 print(self.driver.title)
                 time.sleep(2)
+            else:
+                try:
+                    self.driver=self.GalxePageObject.authorize_galxe(self.driver)
+                except:
+                    pass
+                
         return self.driver
                 
                 
@@ -39,15 +47,14 @@ class TwitterPage:
         #     password = row['Password']
         #     email = row['Email']
         # if index != 0:
-        self.GalxePageObj = GalxePage.GalxePage(self.driver)
-        self.GalxePageObj.click_connect_galxe(self.driver)
-        self.GalxePageObj.change_account(self.driver)
-        TwitterPage.Take_Me_To_Twitter(self.driver)
-        self.driver.delete_all_cookies()
-        self.driver.refresh()
-        # print(index)
-        time.sleep(10)
+        # self.GalxePageObj = GalxePage.GalxePage(self.driver)
+        # self.GalxePageObj.click_connect_galxe(self.driver)
+        # self.GalxePageObj.change_account(self.driver)
+        # TwitterPage.Take_Me_To_Twitter(self.driver)
+        # self.driver.delete_all_cookies()
+        # self.driver.refresh()
         
+        # time.sleep(10)
         # Enter the username
         self.selected.input_text("XPATH",self.TwitterPageObj.USERNAME_XPATH,CRED.USERNAME)
         # Click the next button
