@@ -1,0 +1,19 @@
+{
+  "name": "swap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env scripts/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@uniswap/router-sdk": "^1.6.0",
+    "@uniswap/sdk-core": "^5.3.1",
+    "@warpgatex/warpgate-sdk-v3": "^3.0.0",
+    "bignumber.js": "^9.1.2",
+    "ethers": "5.7"
+  }
+}

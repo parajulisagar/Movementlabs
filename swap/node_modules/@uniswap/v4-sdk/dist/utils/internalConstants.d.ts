@@ -1,0 +1,13 @@
+import JSBI from 'jsbi';
+export declare const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
+export declare const NEGATIVE_ONE: JSBI;
+export declare const ZERO: JSBI;
+export declare const ONE: JSBI;
+export declare const ONE_ETHER: JSBI;
+export declare const Q96: JSBI;
+export declare const Q192: JSBI;
+export declare const FEE_AMOUNT_LOW = 100;
+export declare const FEE_AMOUNT_MEDIUM = 3000;
+export declare const FEE_AMOUNT_HIGHEST = 10000;
+export declare const TICK_SPACING_TEN = 10;
+export declare const TICK_SPACING_SIXTY = 60;

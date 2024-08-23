@@ -1,0 +1,1 @@
+{"version":3,"file":"position.d.ts","sourceRoot":"","sources":["../../src/utils/position.ts"],"names":[],"mappings":"AAGA,8BAAsB,eAAe;IACnC;;OAEG;IACH,OAAO;WAGO,aAAa,CACzB,wBAAwB,EAAE,MAAM,EAChC,wBAAwB,EAAE,MAAM,EAChC,SAAS,EAAE,MAAM,EACjB,oBAAoB,EAAE,MAAM,EAC5B,oBAAoB,EAAE,MAAM;CAQ/B"}

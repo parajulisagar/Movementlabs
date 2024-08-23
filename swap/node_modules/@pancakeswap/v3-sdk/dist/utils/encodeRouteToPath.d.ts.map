@@ -1,0 +1,1 @@
+{"version":3,"file":"encodeRouteToPath.d.ts","sourceRoot":"","sources":["../../src/utils/encodeRouteToPath.ts"],"names":[],"mappings":"AAAA,OAAO,EAAgB,IAAI,EAAE,MAAM,MAAM,CAAA;AACzC,OAAO,EAAE,QAAQ,EAAS,MAAM,4BAA4B,CAAA;AAE5D,OAAO,EAAE,KAAK,EAAE,MAAM,mBAAmB,CAAA;AAEzC;;;;GAIG;AACH,wBAAgB,iBAAiB,CAAC,KAAK,EAAE,KAAK,CAAC,QAAQ,EAAE,QAAQ,CAAC,EAAE,WAAW,EAAE,OAAO,GAAG,IAAI,CA2B9F"}

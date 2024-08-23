@@ -1,0 +1,1 @@
+{"version":3,"file":"multicall.d.ts","sourceRoot":"","sources":["../src/multicall.ts"],"names":[],"mappings":"AAwBA,8BAAsB,SAAS;IAC7B,OAAc,GAAG;;;;;;;;;;;;;;OAAa;IAE9B;;OAEG;IACH,OAAO;WAEO,eAAe,CAAC,SAAS,EAAE,KAAK,MAAM,EAAE,GAAG,KAAK,MAAM,EAAE,EAAE,GAAG,KAAK,MAAM,EAAE;CASzF"}

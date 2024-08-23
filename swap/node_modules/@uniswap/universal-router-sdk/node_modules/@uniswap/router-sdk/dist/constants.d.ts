@@ -1,0 +1,10 @@
+import { Percent } from '@uniswap/sdk-core';
+import JSBI from 'jsbi';
+export declare const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
+export declare const MSG_SENDER = "0x0000000000000000000000000000000000000001";
+export declare const ADDRESS_THIS = "0x0000000000000000000000000000000000000002";
+export declare const ZERO: JSBI;
+export declare const ONE: JSBI;
+export declare const V2_FEE_PATH_PLACEHOLDER = 8388608;
+export declare const ZERO_PERCENT: Percent;
+export declare const ONE_HUNDRED_PERCENT: Percent;

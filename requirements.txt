@@ -2,3 +2,6 @@ beautifulsoup4==4.12.0
 pandas==2.2.2
 selenium==4.23.1
 undetected-chromedriver==3.5.5
+web3
+pyppeteer
+aptos-sdk

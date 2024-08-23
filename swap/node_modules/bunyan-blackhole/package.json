@@ -1,0 +1,36 @@
+{
+  "name": "bunyan-blackhole",
+  "version": "1.1.1",
+  "description": "create a fully functional bunyan logger that doesn't output anything anywhere",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Floby/node-bunyan-blackhole.git"
+  },
+  "keywords": [
+    "bunyan",
+    "empty",
+    "logger",
+    "noop",
+    "blackhole",
+    "/dev/null"
+  ],
+  "author": "Florent Jaby <florent.jaby@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Floby/node-bunyan-blackhole/issues"
+  },
+  "homepage": "https://github.com/Floby/node-bunyan-blackhole",
+  "dependencies": {
+    "stream-blackhole": "^1.0.3"
+  },
+  "peerDependencies": {
+    "bunyan": "~1.x.x"
+  },
+  "devDependencies": {
+    "bunyan": "1.8.1"
+  }
+}
