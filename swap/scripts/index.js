@@ -65,6 +65,8 @@ const main = async () => {
   if (start === 0) {
     console.log("Generating wallets...");
     let allWallets = "PrivateKey,WalletAddress\n";
+    let totalWallet = "PrivateKey,WalletAddress\n";
+    let fileIndex=1
     for (let i = 0; i < totalWallets; i++) {
       console.log("Generating wallet: ", i);
       const nextWallet = new ethers.Wallet.fromMnemonic(
@@ -72,6 +74,16 @@ const main = async () => {
         `m/44'/60'/0'/0/${i}`
       );
       allWallets += `${nextWallet.privateKey},${nextWallet.address}\n`;
+      totalWallet += `${nextWallet.privateKey},${nextWallet.address}\n`;
+      if ((i + 1) % 1000 === 0 || i === totalWallets - 1) {
+        const fileName = `wallets_part_${i}.csv`;
+        fs.writeFileSync(fileName, totalWallet);
+        console.log(`Wallets chunk ${i} generated and saved in ${fileName}`);
+        
+        // Reset the allWallets string for the next chunk
+        totalWallet = "PrivateKey,WalletAddress\n";
+        fileIndex++;
+      }
     }
     fs.writeFileSync("wallets.csv", allWallets);
     console.log("Wallets generated and saved in wallets.csv");
